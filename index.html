@@ -10,13 +10,18 @@
     />
     <style>
       :root {
-        --bg: #f8f6f3;
-        --panel: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --accent: #8b5e3c;
-        --accent-soft: #f1e3d7;
-        --border: #e5e7eb;
+        --bg: #E8DCC4;
+        --panel: #123F36;
+        --panel-alt: #2A6B5C;
+        --panel-soft: #F5EDE0;
+        --text: #102A26;
+        --text-on-dark: #F8F4EE;
+        --muted: #3A4B47;
+        --muted-on-dark: #D9E5E0;
+        --accent: #C49A45;
+        --accent-soft: #EEDDAC;
+        --border: rgba(18, 63, 54, 0.18);
+        --shadow: rgba(18, 63, 54, 0.12);
       }
 
       * { box-sizing: border-box; }
@@ -30,16 +35,17 @@
         font-family: Arial, Helvetica, sans-serif;
         background: var(--bg);
         color: var(--text);
-        line-height: 1.6;
+        line-height: 1.7;
       }
 
       a {
-        color: var(--accent);
+        color: var(--panel);
         text-decoration: underline;
+        text-underline-offset: 0.12em;
       }
 
       a:hover {
-        opacity: 0.8;
+        opacity: 0.82;
       }
 
       .container {
@@ -49,8 +55,8 @@
       }
 
       header {
-        background: rgba(255, 255, 255, 0.92);
-        border-bottom: 1px solid var(--border);
+        background: rgba(18, 63, 54, 0.96);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         position: sticky;
         top: 0;
         z-index: 10;
@@ -67,57 +73,63 @@
       .brand {
         font-size: 1.2rem;
         font-weight: 700;
-        letter-spacing: 0.04em;
-        color: var(--text);
+        letter-spacing: 0.08em;
+        color: var(--text-on-dark);
       }
 
       .nav-links {
         display: flex;
         gap: 28px;
         font-size: 0.98rem;
-        color: var(--muted);
       }
 
       .nav-links a {
-        color: var(--muted);
+        color: var(--text-on-dark);
         text-decoration: none;
+        opacity: 0.9;
       }
 
       .nav-links a:hover {
-        color: var(--text);
+        opacity: 1;
       }
 
       .hero {
-        padding: 90px 0 60px;
+        padding: 90px 0 70px;
       }
 
       .hero-content {
-        max-width: 800px;
+        background: linear-gradient(135deg, rgba(18, 63, 54, 0.96), rgba(42, 107, 92, 0.98));
+        color: var(--text-on-dark);
+        border-radius: 30px;
+        padding: clamp(32px, 5vw, 60px);
+        box-shadow: 0 18px 48px var(--shadow);
       }
 
       .eyebrow {
         display: inline-block;
-        background: var(--accent-soft);
-        color: var(--accent);
+        background: rgba(196, 154, 69, 0.18);
+        color: #F8E7B7;
+        border: 1px solid rgba(196, 154, 69, 0.3);
         font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         padding: 8px 12px;
         border-radius: 999px;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
       }
 
       h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        line-height: 1.05;
+        font-size: clamp(2.7rem, 5vw, 5rem);
+        line-height: 1.02;
         margin: 0 0 18px;
+        letter-spacing: -0.04em;
       }
 
       .lead {
-        font-size: 1.1rem;
-        color: var(--muted);
-        max-width: 620px;
+        font-size: 1.12rem;
+        color: var(--muted-on-dark);
+        max-width: 700px;
         margin: 0 0 28px;
       }
 
@@ -138,119 +150,136 @@
 
       .btn-primary {
         background: var(--accent);
-        color: white;
+        color: #123F36;
       }
 
       .btn-primary:hover {
-        opacity: 0.92;
+        background: #D8B772;
       }
 
       .btn-secondary {
-        border: 1px solid var(--border);
-        background: white;
-        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-on-dark);
       }
 
       .btn-secondary:hover {
-        background: var(--bg);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       section {
-        padding: 60px 0;
-        border-top: 1px solid var(--border);
+        padding: 70px 0;
       }
 
       .section-title {
-        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-size: clamp(2rem, 3vw, 2.8rem);
         margin: 0 0 28px;
+        color: var(--panel);
       }
 
-      .interest-category {
-        margin-bottom: 40px;
+      .stack {
+        display: grid;
+        gap: 26px;
       }
 
-      .interest-category h3 {
-        font-size: 1.3rem;
-        margin: 0 0 14px;
+      .card {
+        background: var(--panel);
+        color: var(--text-on-dark);
+        border-radius: 24px;
+        padding: clamp(24px, 3vw, 32px);
+        box-shadow: 0 12px 30px var(--shadow);
+      }
+
+      .card h3 {
+        margin: 0 0 16px;
+        font-size: clamp(1.3rem, 2vw, 1.7rem);
+        color: #FDEFC4;
+      }
+
+      .card ul {
+        margin: 0;
+        padding-left: 22px;
+        color: var(--muted-on-dark);
+      }
+
+      .card li {
+        margin: 10px 0;
+      }
+
+      .highlight-box {
+        background: var(--panel-soft);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: clamp(24px, 3vw, 32px);
+        box-shadow: 0 12px 24px rgba(18, 63, 54, 0.04);
+      }
+
+      .highlight-box h3 {
+        margin-top: 0;
+        color: var(--panel);
+      }
+
+      .highlight-box ul,
+      .highlight-box ol {
+        margin: 0;
+        padding-left: 22px;
         color: var(--text);
       }
 
-      .interest-category ul {
-        margin: 0;
-        padding: 0 0 0 24px;
-        color: var(--muted);
+      .highlight-box li {
+        margin: 10px 0;
       }
 
-      .interest-category li {
-        margin: 8px 0;
-      }
-
-      .interest-category ul ul {
+      .sublist {
         margin-top: 8px;
-        font-size: 0.95rem;
       }
 
-      .interest-category ul ul li {
+      .sublist li {
         margin: 6px 0;
       }
 
       .contact-box {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 32px;
-        max-width: 600px;
+        background: var(--panel-alt);
+        color: var(--text-on-dark);
+        border-radius: 24px;
+        padding: clamp(24px, 3vw, 32px);
       }
 
       .contact-box p {
         margin: 12px 0;
-        color: var(--muted);
+        color: var(--muted-on-dark);
       }
 
-      .contact-box p a {
-        color: var(--accent);
+      .contact-box a {
+        color: #FDEFC4;
       }
 
       .social-links {
         display: flex;
-        gap: 16px;
+        gap: 12px;
+        flex-wrap: wrap;
         margin-top: 20px;
       }
 
       .social-links a {
         display: inline-block;
         padding: 10px 16px;
-        background: var(--accent-soft);
-        color: var(--accent);
-        border-radius: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-on-dark);
         text-decoration: none;
-        font-weight: 600;
-        transition: 0.2s ease;
+        font-weight: 700;
       }
 
       .social-links a:hover {
-        background: var(--accent);
-        color: white;
+        background: rgba(255, 255, 255, 0.14);
       }
 
       footer {
-        padding: 40px 0 60px;
-        color: var(--muted);
+        padding: 32px 0 60px;
+        color: var(--panel);
         text-align: center;
-        border-top: 1px solid var(--border);
-      }
-
-      .fun-facts {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 24px;
-        margin-top: 28px;
-      }
-
-      .fun-facts p {
-        margin: 12px 0;
-        color: var(--muted);
+        font-weight: 600;
       }
 
       @media (max-width: 760px) {
@@ -268,7 +297,7 @@
         }
 
         section {
-          padding: 40px 0;
+          padding: 50px 0;
         }
       }
     </style>
@@ -286,101 +315,103 @@
 
     <main>
       <section class="hero">
-        <div class="container hero-content">
-          <div class="eyebrow">Welcome</div>
-          <h1>Hi — I'm Sarah.</h1>
-          <p class="lead">
-            I'm interested in community building, partner dancing, and software engineering. I enjoy thoughtful conversations about philosophy, reading widely, and growing things. This site is where I share my interests and what I'm working on.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#contact">Get in touch</a>
-            <a class="btn btn-secondary" href="#interests">Learn more</a>
+        <div class="container">
+          <div class="hero-content">
+            <div class="eyebrow">Welcome</div>
+            <h1>Hi — I'm Sarah.</h1>
+            <p class="lead">
+              I care deeply about building community, moving through the world with creativity and care, and using software to help solve meaningful human problems.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contact">Get in touch</a>
+              <a class="btn btn-secondary" href="#interests">Explore my interests</a>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="interests">
         <div class="container">
-          <h2 class="section-title">Interests</h2>
+          <h2 class="section-title">What I care about</h2>
 
-          <div class="interest-category">
-            <h3>Community Building</h3>
-            <ul>
-              <li>I participate in the council of a consensus-based intentional community centered around a neighborhood garden</li>
-              <li>I am a member of several local community group chats for mutual aid, partner dance, and social events</li>
-              <li>I enjoy attending the Twin Oaks Communities Conference focused on intentional communities</li>
-            </ul>
-          </div>
+          <div class="stack">
+            <article class="card">
+              <h3>Community Building</h3>
+              <ul>
+                <li>I participate in the council of a consensus-based intentional community centered around a neighborhood garden.</li>
+                <li>I am a member of several local community group chats for mutual aid, partner dance, and social events.</li>
+                <li>I enjoy attending the Twin Oaks Communities Conference focused on intentional communities.</li>
+              </ul>
+            </article>
 
-          <div class="interest-category">
-            <h3>Partner Dancing</h3>
-            <ul>
-              <li>I am experienced at leading Argentine tango, blues, Lindy hop, and fusion dance</li>
-              <li>I am passably capable of following in salsa, bachata, merengue, zouk, kizomba, contra, west coast swing, and Balboa</li>
-              <li>I have taught group and individual classes and helped organized social dance events, for example as president of the Argentine Tango Club of my university</li>
-            </ul>
-          </div>
+            <article class="card">
+              <h3>Partner Dancing</h3>
+              <ul>
+                <li>I am experienced at leading Argentine tango, blues, Lindy hop, and fusion dance.</li>
+                <li>I am passably capable of following in salsa, bachata, merengue, zouk, kizomba, contra, west coast swing, and Balboa.</li>
+                <li>I have taught group and individual classes and helped organize social dance events, for example as president of the Argentine Tango Club of my university.</li>
+              </ul>
+            </article>
 
-          <div class="interest-category">
-            <h3>Software Engineering</h3>
-            <ul>
-              <li>I am primarily an Android developer</li>
-              <li>I pursued tech out of a desire to apply this problem solving to areas related to the social sciences and environmentalism</li>
-            </ul>
-          </div>
+            <article class="card">
+              <h3>Software Engineering</h3>
+              <ul>
+                <li>I am primarily an Android developer.</li>
+                <li>I pursued tech out of a desire to apply this problem-solving to areas related to the social sciences and environmentalism.</li>
+              </ul>
+            </article>
 
-          <div class="interest-category">
-            <h3>Other Interests</h3>
-            <ul>
-              <li>
-                Writing — see my <a href="https://sarahbhas.substack.com" target="_blank">Substack</a>
-              </li>
-              <li>
-                Reading — here are some books I've found influential and enjoyable:
-                <ul>
-                  <li>
-                    Childhood
-                    <ul>
-                      <li>Dragonriders of Pern</li>
-                      <li>Hatchet</li>
-                      <li>Eragon</li>
-                      <li>Game of Thrones</li>
-                    </ul>
-                  </li>
-                  <li>
-                    Adulthood
-                    <ul>
-                      <li>Nonviolent Communication</li>
-                      <li>High Conflict</li>
-                      <li>A Deadly Education</li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li>Gardening</li>
-              <li>Philosophy — I have never studied it formally or read many of the foundational texts, but I enjoy discussing it</li>
-            </ul>
-          </div>
+            <div class="highlight-box">
+              <h3>Other interests</h3>
+              <ul>
+                <li>Writing — see my <a href="https://sarahbhas.substack.com" target="_blank">Substack</a></li>
+                <li>
+                  Reading — some books I've found influential and enjoyable:
+                  <ul class="sublist">
+                    <li><strong>Childhood</strong>
+                      <ul class="sublist">
+                        <li>Dragonriders of Pern</li>
+                        <li>Hatchet</li>
+                        <li>Eragon</li>
+                        <li>Game of Thrones</li>
+                      </ul>
+                    </li>
+                    <li><strong>Adulthood</strong>
+                      <ul class="sublist">
+                        <li>Nonviolent Communication</li>
+                        <li>High Conflict</li>
+                        <li>A Deadly Education</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Gardening</li>
+                <li>Philosophy — I have never studied it formally or read many of the foundational texts, but I enjoy discussing it.</li>
+              </ul>
+            </div>
 
-          <div class="interest-category">
-            <h3>Potential Future Interests</h3>
-            <ul>
-              <li>Might be interested in pursuing a career related to conflict resolution</li>
-              <li>Could get into improv comedy</li>
-            </ul>
-          </div>
+            <div class="highlight-box">
+              <h3>Potential future interests</h3>
+              <ul>
+                <li>Might be interested in pursuing a career related to conflict resolution.</li>
+                <li>Could get into improv comedy.</li>
+              </ul>
+            </div>
 
-          <div class="fun-facts">
-            <h3 style="margin-top: 0; color: var(--text);">Miscellaneous Fun Facts</h3>
-            <p>I enjoyed the em dash before it was uncool</p>
-            <p>I never really got into the habit of listening to music because I didn't do it as a kid (though I love many musics)</p>
+            <div class="highlight-box">
+              <h3>Miscellaneous fun facts</h3>
+              <ul>
+                <li>I enjoyed the em dash before it was uncool.</li>
+                <li>I never really got into the habit of listening to music because I didn't do it as a kid (though I love many musics).</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="contact">
         <div class="container">
-          <h2 class="section-title">Get in Touch</h2>
+          <h2 class="section-title">Get in touch</h2>
           <div class="contact-box">
             <p><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
             <p><strong>Substack:</strong> <a href="https://sarahbhas.substack.com" target="_blank">sarahbhas.substack.com</a></p>
