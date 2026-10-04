@@ -6,7 +6,7 @@
     <title>Sarah Bhas | Personal Website</title>
     <meta
       name="description"
-      content="Personal website for Sarah Bhas."
+      content="Personal website for Sarah Bhas — community building, partner dancing, software engineering."
     />
     <style>
       :root {
@@ -34,8 +34,12 @@
       }
 
       a {
-        color: inherit;
-        text-decoration: none;
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      a:hover {
+        opacity: 0.8;
       }
 
       .container {
@@ -64,6 +68,7 @@
         font-size: 1.2rem;
         font-weight: 700;
         letter-spacing: 0.04em;
+        color: var(--text);
       }
 
       .nav-links {
@@ -71,6 +76,11 @@
         gap: 28px;
         font-size: 0.98rem;
         color: var(--muted);
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
       }
 
       .nav-links a:hover {
@@ -81,11 +91,8 @@
         padding: 90px 0 60px;
       }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 40px;
-        align-items: center;
+      .hero-content {
+        max-width: 800px;
       }
 
       .eyebrow {
@@ -126,6 +133,7 @@
         border-radius: 999px;
         font-weight: 700;
         transition: 0.2s ease;
+        text-decoration: none;
       }
 
       .btn-primary {
@@ -140,88 +148,109 @@
       .btn-secondary {
         border: 1px solid var(--border);
         background: white;
+        color: var(--text);
       }
 
-      .profile-card {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 28px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-      }
-
-      .profile-box {
-        width: 100%;
-        min-height: 280px;
-        border-radius: 18px;
-        background: linear-gradient(135deg, #f7efe8, #e7d8cb);
-        border: 1px solid #e8d3be;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--accent);
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .btn-secondary:hover {
+        background: var(--bg);
       }
 
       section {
-        padding: 32px 0;
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
       }
 
       .section-title {
         font-size: clamp(1.8rem, 3vw, 2.6rem);
-        margin: 0 0 18px;
+        margin: 0 0 28px;
       }
 
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
+      .interest-category {
+        margin-bottom: 40px;
       }
 
-      .info-card {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 24px;
+      .interest-category h3 {
+        font-size: 1.3rem;
+        margin: 0 0 14px;
+        color: var(--text);
       }
 
-      .info-card h3 {
-        margin-top: 0;
-        font-size: 1.2rem;
-      }
-
-      .info-card p {
-        margin-bottom: 0;
+      .interest-category ul {
+        margin: 0;
+        padding: 0 0 0 24px;
         color: var(--muted);
       }
 
-      .about {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 24px;
-        align-items: start;
+      .interest-category li {
+        margin: 8px 0;
       }
 
-      .about-box,
+      .interest-category ul ul {
+        margin-top: 8px;
+        font-size: 0.95rem;
+      }
+
+      .interest-category ul ul li {
+        margin: 6px 0;
+      }
+
       .contact-box {
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 18px;
-        padding: 24px;
+        padding: 32px;
+        max-width: 600px;
       }
 
-      .about-box p,
       .contact-box p {
+        margin: 12px 0;
         color: var(--muted);
+      }
+
+      .contact-box p a {
+        color: var(--accent);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        padding: 10px 16px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--accent);
+        color: white;
       }
 
       footer {
-        padding: 24px 0 60px;
+        padding: 40px 0 60px;
         color: var(--muted);
         text-align: center;
+        border-top: 1px solid var(--border);
+      }
+
+      .fun-facts {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+        margin-top: 28px;
+      }
+
+      .fun-facts p {
+        margin: 12px 0;
+        color: var(--muted);
       }
 
       @media (max-width: 760px) {
@@ -238,10 +267,8 @@
           justify-content: center;
         }
 
-        .hero-grid,
-        .about,
-        .card-grid {
-          grid-template-columns: 1fr;
+        section {
+          padding: 40px 0;
         }
       }
     </style>
@@ -251,8 +278,7 @@
       <div class="container nav">
         <div class="brand">SARAH BHAS</div>
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
+          <a href="#interests">Interests</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -260,76 +286,109 @@
 
     <main>
       <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow">Personal Website</div>
-            <h1>Welcome — I’m Sarah.</h1>
-            <p class="lead">
-              I’m a creative, curious, and driven professional building a space to share my work,
-              ideas, and interests.
-            </p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#contact">Get in touch</a>
-              <a class="btn btn-secondary" href="#about">Learn more</a>
-            </div>
-          </div>
-
-          <div class="profile-card" aria-label="Profile preview">
-            <div class="profile-box">Profile</div>
+        <div class="container hero-content">
+          <div class="eyebrow">Welcome</div>
+          <h1>Hi — I'm Sarah.</h1>
+          <p class="lead">
+            I'm interested in community building, partner dancing, and software engineering. I enjoy thoughtful conversations about philosophy, reading widely, and growing things. This site is where I share my interests and what I'm working on.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Get in touch</a>
+            <a class="btn btn-secondary" href="#interests">Learn more</a>
           </div>
         </div>
       </section>
 
-      <section id="about">
+      <section id="interests">
         <div class="container">
-          <h2 class="section-title">About</h2>
-          <div class="about">
-            <div class="about-box">
-              <p>
-                I’m passionate about building meaningful work, learning continuously, and creating experiences that
-                connect with people. This space is where I share who I am, what I care about, and the projects I’m
-                working on.
-              </p>
-              <p>
-                You can expect a blend of creativity, purpose, and a growing body of work that reflects my interests and goals.
-              </p>
-            </div>
-            <div class="contact-box">
-              <h3>Quick details</h3>
-              <p>Based in: Your location</p>
-              <p>Interests: Design, technology, creativity, growth</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <h2 class="section-title">Interests</h2>
 
-      <section id="work">
-        <div class="container">
-          <h2 class="section-title">Highlights</h2>
-          <div class="card-grid">
-            <article class="info-card">
-              <h3>Creative Work</h3>
-              <p>Thoughtful projects, ideas, and creative direction that reflect my perspective.</p>
-            </article>
-            <article class="info-card">
-              <h3>Professional Focus</h3>
-              <p>Work that blends strategy, problem-solving, and execution with a human-centered lens.</p>
-            </article>
-            <article class="info-card">
-              <h3>Personal Growth</h3>
-              <p>Learning, exploring, and evolving through new experiences and meaningful opportunities.</p>
-            </article>
+          <div class="interest-category">
+            <h3>Community Building</h3>
+            <ul>
+              <li>I participate in the council of a consensus-based intentional community centered around a neighborhood garden</li>
+              <li>I am a member of several local community group chats for mutual aid, partner dance, and social events</li>
+              <li>I enjoy attending the Twin Oaks Communities Conference focused on intentional communities</li>
+            </ul>
+          </div>
+
+          <div class="interest-category">
+            <h3>Partner Dancing</h3>
+            <ul>
+              <li>I am experienced at leading Argentine tango, blues, Lindy hop, and fusion dance</li>
+              <li>I am passably capable of following in salsa, bachata, merengue, zouk, kizomba, contra, west coast swing, and Balboa</li>
+              <li>I have taught group and individual classes and helped organized social dance events, for example as president of the Argentine Tango Club of my university</li>
+            </ul>
+          </div>
+
+          <div class="interest-category">
+            <h3>Software Engineering</h3>
+            <ul>
+              <li>I am primarily an Android developer</li>
+              <li>I pursued tech out of a desire to apply this problem solving to areas related to the social sciences and environmentalism</li>
+            </ul>
+          </div>
+
+          <div class="interest-category">
+            <h3>Other Interests</h3>
+            <ul>
+              <li>
+                Writing — see my <a href="https://sarahbhas.substack.com" target="_blank">Substack</a>
+              </li>
+              <li>
+                Reading — here are some books I've found influential and enjoyable:
+                <ul>
+                  <li>
+                    Childhood
+                    <ul>
+                      <li>Dragonriders of Pern</li>
+                      <li>Hatchet</li>
+                      <li>Eragon</li>
+                      <li>Game of Thrones</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Adulthood
+                    <ul>
+                      <li>Nonviolent Communication</li>
+                      <li>High Conflict</li>
+                      <li>A Deadly Education</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Gardening</li>
+              <li>Philosophy — I have never studied it formally or read many of the foundational texts, but I enjoy discussing it</li>
+            </ul>
+          </div>
+
+          <div class="interest-category">
+            <h3>Potential Future Interests</h3>
+            <ul>
+              <li>Might be interested in pursuing a career related to conflict resolution</li>
+              <li>Could get into improv comedy</li>
+            </ul>
+          </div>
+
+          <div class="fun-facts">
+            <h3 style="margin-top: 0; color: var(--text);">Miscellaneous Fun Facts</h3>
+            <p>I enjoyed the em dash before it was uncool</p>
+            <p>I never really got into the habit of listening to music because I didn't do it as a kid (though I love many musics)</p>
           </div>
         </div>
       </section>
 
       <section id="contact">
         <div class="container">
-          <h2 class="section-title">Contact</h2>
+          <h2 class="section-title">Get in Touch</h2>
           <div class="contact-box">
-            <p>Email: hello@example.com</p>
-            <p>Instagram: @yourhandle</p>
-            <p>LinkedIn: linkedin.com/in/yourprofile</p>
+            <p><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
+            <p><strong>Substack:</strong> <a href="https://sarahbhas.substack.com" target="_blank">sarahbhas.substack.com</a></p>
+            <p><strong>Connect:</strong></p>
+            <div class="social-links">
+              <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+              <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            </div>
           </div>
         </div>
       </section>
